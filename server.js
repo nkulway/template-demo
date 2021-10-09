@@ -9,6 +9,19 @@ server.get('/heartbeat', (req, res) => {
     res.json({
         "is": "working"
     })
+});
+
+
+//template rendering 
+server.engine('html', es6renderer);
+server.set('views', 'views')
+server.set('view engine', 'html');
+
+
+server.get('/', (req, res) => {
+    res.render('landing', {
+
+    })
 })
 
 const { PORT } = process.env;
