@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { application } = require('express');
 const express = require('express');
 const es6renderer = require('express-es6-template-engine');
 const morgan = require('morgan');
@@ -12,6 +13,10 @@ server.get('/heartbeat', (req, res) => {
 });
 
 
+// middleware
+server.use('/', express.static(__dirname + '/public'))
+
+
 //template rendering 
 server.engine('html', es6renderer);
 server.set('views', 'views')
@@ -20,7 +25,10 @@ server.set('view engine', 'html');
 
 server.get('/', (req, res) => {
     res.render('landing', {
-
+        partials: {
+            footer: 'partials/footer',
+            header: 'partials/header'
+        }
     })
 })
 
