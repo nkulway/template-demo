@@ -31,6 +31,8 @@ server.get('/', (req, res) => {
     })
 })
 
+// added route for the info page
+
 server.get('/info.html', (req, res) => {
     res.render('info', {
         partials: {
