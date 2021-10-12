@@ -22,9 +22,17 @@ server.engine('html', es6renderer);
 server.set('views', 'views')
 server.set('view engine', 'html');
 
-
 server.get('/', (req, res) => {
     res.render('landing', {
+        partials: {
+            footer: 'partials/footer',
+            header: 'partials/header'
+        }
+    })
+})
+
+server.get('/info.html', (req, res) => {
+    res.render('info', {
         partials: {
             footer: 'partials/footer',
             header: 'partials/header'
